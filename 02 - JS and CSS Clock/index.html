@@ -62,38 +62,47 @@
       background: black;
       position: absolute;
       top: 50%;
-      transform-origin: 100%;
       transform: rotate(90deg);
+      transform-origin: 100%;
       transition: all 0.05s;
-      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+      transition-timing-function: cubic-bezier(0.1, 2.8, 0.58, 1);
     }
-</style>
 
-<script>
-  const secondHand = document.querySelector('.second-hand');
-  const minsHand = document.querySelector('.min-hand');
-  const hourHand = document.querySelector('.hour-hand');
+    
+  </style>
 
-  function setDate() {
-    const now = new Date();
+  <script>
+    const secondHand=document.querySelector('.second-hand')
+    const minHnad=document.querySelector('.min-hand')
+    const hourHand=document.querySelector('.hour-hand')
+    const hand=document.querySelector('.hand')
+    console.log(hand)
 
-    const seconds = now.getSeconds();
-    const secondsDegrees = ((seconds / 60) * 360) + 90;
-    secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+    function setDate(){
+      const now=new Date()
 
-    const mins = now.getMinutes();
-    const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) + 90;
-    minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+      const seconds=now.getSeconds()
+      const secondsDegree=((seconds / 60) * 360)+ 90
+      if(seconds ===60){
 
-    const hour = now.getHours();
-    const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) + 90;
-    hourHand.style.transform = `rotate(${hourDegrees}deg)`;
-  }
+        hand.style.transition='none';
+      }
+      else
+      secondHand.style.transform=`rotate(${secondsDegree}deg)`
 
-  setInterval(setDate, 1000);
+      const mins=now.getMinutes()
+      const minsDegree=((mins / 60) * 360) + 90
+      minHnad.style.transform=`rotate(${minsDegree}deg)`
 
-  setDate();
+      const hours= now.getHours()
+      const hoursDegree=((hours / 12) * 360 ) + 90
+      hourHand.style.transform=`rotate(${hoursDegree}deg)`
+    }
 
-</script>
+    setInterval(setDate,1000)
+
+    setDate()
+
+  </script>
 </body>
 </html>
