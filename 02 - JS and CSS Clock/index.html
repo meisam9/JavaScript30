@@ -75,19 +75,13 @@
     const secondHand=document.querySelector('.second-hand')
     const minHnad=document.querySelector('.min-hand')
     const hourHand=document.querySelector('.hour-hand')
-    const hand=document.querySelector('.hand')
-    console.log(hand)
 
     function setDate(){
       const now=new Date()
 
       const seconds=now.getSeconds()
       const secondsDegree=((seconds / 60) * 360)+ 90
-      if(seconds ===60){
 
-        hand.style.transition='none';
-      }
-      else
       secondHand.style.transform=`rotate(${secondsDegree}deg)`
 
       const mins=now.getMinutes()
