@@ -7,6 +7,17 @@
 </head>
 <body>
 <script>
+  let key=[]
+  const secretCode="hesoyam"
+  window.addEventListener("keyup",(e)=>{
+    key.push(e.key)
+    // key.splice(-secretCode.length - 1, key.length - secretCode.length);
+    if(key.length>secretCode.length)
+      key.shift()
+      console.log(key)
+    if(key.join('').includes(secretCode))
+      cornify_add()
+  })
 </script>
 </body>
 </html>
