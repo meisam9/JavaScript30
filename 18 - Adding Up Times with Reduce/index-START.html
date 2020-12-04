@@ -171,17 +171,35 @@
     <li data-time="6:03">
       Video 55
     </li>
-    <li data-time="12:39">
+    <li data-time="12:35">
       Video 56
     </li>
-    <li data-time="1:56">
+    <li data-time="1:50">
       Video 57
     </li>
-    <li data-time="4:04">
+    <li data-time="5:06">
       Video 58
     </li>
   </ul>
 <script>
+  const times=Array.from(document.querySelectorAll('[data-time]'))
+  const timesVideo=times
+        .map(time=>time.dataset.time)
+        .map(timeCode=>{
+          const [mins, seconds]=timeCode.split(':').map(parseFloat)
+          return (mins * 60) + seconds
+        })
+        .reduce((a, b)=>{
+          return a+b
+        })
+  let seconds=timesVideo
+  const hours=Math.floor (seconds /3600)
+  seconds=seconds % 3600
+
+  const mins =Math.floor ( seconds / 60)
+  seconds=seconds % 60
+  
+  console.log(hours, mins, seconds)
 </script>
 </body>
 </html>
